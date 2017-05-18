@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="definitions_0vo4bil" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="vorauszahlung-ermitteln" name="Vorauszahlung ermitteln">
+    <decisionTable id="decisionTable">
+      <input id="input1" label="Vertragskunde" camunda:inputVariable="">
+        <inputExpression id="inputExpression1" typeRef="boolean">        <text>vertragskunde</text>
+</inputExpression>
+      </input>
+      <input id="InputClause_1kae11v" label="Kundenwert" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_05q2naf" typeRef="string">        <text>kundenwert</text>
+</inputExpression>
+        <inputValues id="UnaryTests_08x1mun">        <text><![CDATA["A","B"]]></text>
+</inputValues>
+      </input>
+      <input id="InputClause_16j28du" label="Mahnung offen" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_1wz2uah" typeRef="boolean">        <text>mahnung</text>
+</inputExpression>
+      </input>
+      <output id="output1" label="Vorauszahlung erforderlich" name="vorauszahlung" typeRef="boolean" />
+      <rule id="row-499730374-3">
+        <description>Vertragskunden ohne Mahnstatus zahlen mit nächster Rechnung.</description>
+        <inputEntry id="UnaryTests_0z83w2f">        <text>true</text>
+</inputEntry>
+        <inputEntry id="UnaryTests_19235fn">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0as25xc">        <text>false</text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_0mdca9v">        <text>false</text>
+</outputEntry>
+      </rule>
+      <rule id="row-499730374-4">
+        <description>Vertragskunden mit Wert A zahlen mit nächster Rechnung.</description>
+        <inputEntry id="UnaryTests_1p5vyuu">        <text>true</text>
+</inputEntry>
+        <inputEntry id="UnaryTests_1or5tpt">        <text><![CDATA["A"]]></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_1cxew8k">        <text>true</text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_0e5te0p">        <text>false</text>
+</outputEntry>
+      </rule>
+      <rule id="row-499730374-2">
+        <description>Vertragskunden mit Wert B und Mahnstatus müssen vorauszahlen.</description>
+        <inputEntry id="UnaryTests_0qtaoea">        <text>true</text>
+</inputEntry>
+        <inputEntry id="UnaryTests_1a04hpe">        <text><![CDATA["B"]]></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0yui4qr">        <text>true</text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_095jalt">        <text>true</text>
+</outputEntry>
+      </rule>
+      <rule id="row-499730374-1">
+        <description>Prepaid Kunden zahlen immer voraus</description>
+        <inputEntry id="UnaryTests_1ucy8de">        <text>false</text>
+</inputEntry>
+        <inputEntry id="UnaryTests_1axikue">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_1eq83yn">        <text></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_0m09rw2">        <text>true</text>
+</outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>
